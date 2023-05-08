@@ -1,6 +1,6 @@
 # Twitter Reloaded
 
-Twitter Reloaded is a Twitter clone project built using Django, Python, and MySQL. The project aims to implement core Twitter features, such as creating tweets, replying to tweets, and displaying tweets as threads.
+Twitter Reloaded is a Twitter clone project built using Django, Python, and SQLite. The project aims to implement core Twitter features, such as creating tweets, replying to tweets, and displaying tweets as threads.
 
 ## Features
 
