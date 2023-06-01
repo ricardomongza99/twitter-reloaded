@@ -4,5 +4,5 @@ from . import views
 app_name = 'tweets'
 
 urlpatterns = [
-    path('', views.home, name='home'),
+    path('', views.display_tweets, name='home'),
 ]
