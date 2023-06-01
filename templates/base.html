@@ -9,31 +9,7 @@
 <div class="container-fluid">
     <div class="row flex-nowrap">
         <!-- Vertical navbar -->
-        <div class="col-auto col-md-3 col-xl-2 p-3 bg-light" style="height: 100vh">
-            <a class="navbar-brand" href="#">
-                {% load static %}  <!-- Load the staticfiles library -->
-                <img src="{% static 'tweets/twitter_logo.png' %}" alt="Twitter Logo" height="30" width="30">
-            </a>
-            <hr>
-            <ul class="nav nav-pills flex-column mb-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" href="" aria-current="page">
-                        Home
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        Explore
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        Profile
-                    </a>
-                </li>
-                <!-- ... more navigation items ... -->
-            </ul>
-        </div>
+        {% include "components/navbar.html" %}
         <!-- Content  -->
         <div class="col py-3">
             {% block content %}

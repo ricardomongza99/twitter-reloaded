@@ -23,12 +23,13 @@
 
             <!-- Existing Tweets -->
             {% for tweet in tweets %}
-                <div class="card mb-3">
+                <div class=" mb-3">
                     <div class="card-body">
                         <h6 class="card-subtitle mb-2 text-muted">{{ tweet.user.username }} · {{ tweet.created_at }}</h6>
                         <p class="card-text">{{ tweet.content }}</p>
                     </div>
                 </div>
+                <hr>
             {% empty %}
                 <p>No tweets available.</p>
             {% endfor %}
