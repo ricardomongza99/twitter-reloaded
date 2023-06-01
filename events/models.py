@@ -1,3 +1,13 @@
 from django.db import models
+from users.models import User
 
-# Create your models here.
+
+class Event(models.Model):
+    ACTION_CHOICES = (
+        ('CT', 'Create Tweet'),
+        ('RT', 'Reply Tweet'),
+        ('OA', 'Open Application'),
+    )
+    action = models.CharField(max_length=2, choices=ACTION_CHOICES)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    timestamp = models.DateTimeField(auto_now_add=True)
