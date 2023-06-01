@@ -1,8 +1,7 @@
 from django.urls import path
 from . import views
 
-app_name = 'tweets'
-
 urlpatterns = [
-    path('', views.display_tweets, name='home'),
+    path('', views.home, name='home'),
+    path('create-tweet/', views.create_tweet, name='create-tweet'),
 ]
