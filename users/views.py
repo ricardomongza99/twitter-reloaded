@@ -30,4 +30,4 @@ def user_login(request):
         form = LoginForm()
 
     context = {'form': form}
-    return render(request, 'login.html', context)
+    return render(request, 'users/login.html',)
