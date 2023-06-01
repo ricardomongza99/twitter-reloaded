@@ -25,13 +25,16 @@
             {% for tweet in tweets %}
                 <div class=" mb-3">
                     <div class="card-body">
-                        <h6 class="card-subtitle mb-2 text-muted">{{ tweet.user.username }} · {{ tweet.created_at }}</h6>
-                        <p class="card-text">{{ tweet.content }}</p>
+                            <h6 class="mb-2">
+                              <span class="text-normal">{{ tweet.user.username }}</span>
+                              <span class="text-muted">· {{ tweet.created_at }}</span>
+                            </h6>
+                        <p>{{ tweet.content }}</p>
                     </div>
                 </div>
                 <hr>
             {% empty %}
-                <p>No tweets available.</p>
+                <p>Wow, such empty</p>
             {% endfor %}
         </div>
     </div>
