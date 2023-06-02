@@ -1,15 +1,16 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from .models import Tweet
 from django.utils import timezone
 
 
-# @login_required
+@login_required
 def home(request):
     tweets = Tweet.objects.filter(parent__isnull=True).order_by('-created_at')[:10]
     return render(request, 'tweets/home.html', {'tweets': tweets})
 
 
-# @login_required
+@login_required
 def create_tweet(request):
     if request.method == 'POST':
         content = request.POST.get('content')
