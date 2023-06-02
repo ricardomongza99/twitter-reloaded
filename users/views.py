@@ -1,18 +1,21 @@
 from django.shortcuts import render, redirect
-from .forms import RegistreForm, LoginForm
+from .forms import RegisterForm, LoginForm
 from django.contrib.auth import authenticate, login
 
 # Create your views here.
 
+
 def register(request):
-    if request.method  == 'POST':
-        form = RegistreForm(request.POST)
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('login')
+            user = form.save()
+            login(request, user)
+            return redirect('/tweets/')
     else:
-        form = RegistreForm()
+        form = RegisterForm()
     return render(request, 'users/register.html', {'form': form})
+
 
 def user_login(request):
     if request.method == 'POST':
