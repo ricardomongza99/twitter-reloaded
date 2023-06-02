@@ -1,10 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="col-md-8 border-end border-bottom">
+        <!-- Navigation bar -->
+        <nav class="navbar navbar-light">
+            <div class="container-fluid">
+                <a href="#" onclick="window.history.back();" class="navbar-brand">
+                    <i class="fas fa-arrow-left fa-xs px-2"></i>
+                    Tweet
+                </a>
+            </div>
+        </nav>
+        <hr>
+
+        <!-- The main tweet -->
+        <div class="tweet-container">
+            <a class="text-decoration-none text-dark" href="{% url 'tweet-thread' tweet.id %}">
+                <div class="p-3">
+                    <h6 class="mb-2">
+                        <span class="text-normal">@{{ tweet.user.username }}</span>
+                    </h6>
+                    <p>{{ tweet.content }}</p>
+                    <p class="text-muted">{{ tweet.created_at }}</p>
+                </div>
+            </a>
+            <hr style="margin: 0">
+        </div>
+
+        <!-- Replies -->
+        {% for reply in replies %}
+            {% include 'components/tweet.html' with tweet=reply %}
+        {% empty %}
+            <p class="p-3">No replies yet.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

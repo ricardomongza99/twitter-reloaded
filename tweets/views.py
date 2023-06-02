@@ -27,4 +27,4 @@ def create_tweet(request):
 def tweet_thread(request, tweet_id):
     tweet = get_object_or_404(Tweet, id=tweet_id)
     replies = Tweet.objects.filter(parent=tweet)
-    return render(request, 'tweets/thread.html', {'main_tweet': tweet, 'replies': replies})
+    return render(request, 'tweets/thread.html', {'tweet': tweet, 'replies': replies})

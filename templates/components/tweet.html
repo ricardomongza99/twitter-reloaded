@@ -1,0 +1,18 @@
+<div class="tweet-container">
+    <a class="text-decoration-none text-dark" href="{% url 'tweet-thread' tweet.id %}">
+        <div class="mb-3 p-3">
+            <h6 class="mb-2">
+                <span class="text-normal">@{{ tweet.user.username }}</span>
+                <span class="text-muted">· {{ tweet.created_at }}</span>
+            </h6>
+            <p>{{ tweet.content }}</p>
+            <div class="pt-2 text-muted">
+                <i class="far fa-comment me-2"></i>
+                {% if tweet.replies.count > 0 %}
+                    <span>{{ tweet.replies.count }}</span>
+                {% endif %}
+            </div>
+        </div>
+    </a>
+    <hr style="margin: 0">
+</div>

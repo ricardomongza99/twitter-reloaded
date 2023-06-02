@@ -26,20 +26,7 @@
 
         <!-- Existing Tweets -->
         {% for tweet in tweets %}
-            <div class="tweet-container">
-                <a class="text-decoration-none text-dark">
-                    <div class="mb-3 p-3">
-                        <div class="card-body">
-                                <h6 class="mb-2">
-                                  <span class="text-normal">{{ tweet.user.username }}</span>
-                                  <span class="text-muted">· {{ tweet.created_at }}</span>
-                                </h6>
-                            <p>{{ tweet.content }}</p>
-                        </div>
-                    </div>
-                </a>
-                <hr style="margin: 0">
-            </div>
+            {% include 'components/tweet.html' %}
         {% empty %}
             <p>Wow, such empty</p>
         {% endfor %}
