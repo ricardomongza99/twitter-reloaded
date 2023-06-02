@@ -9,7 +9,7 @@ def register(request):
         form = RegistreForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('home')
+            return redirect('login')
     else:
         form = RegistreForm()
     return render(request, 'users/register.html', {'form': form})
