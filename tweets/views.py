@@ -25,7 +25,22 @@ def create_tweet(request):
         return redirect('home')
 
 
+@login_required
 def tweet_thread(request, tweet_id):
     tweet = get_object_or_404(Tweet, id=tweet_id)
     replies = Tweet.objects.filter(parent=tweet)
     return render(request, 'tweets/thread.html', {'tweet': tweet, 'replies': replies})
+
+
+@login_required
+def create_reply(request, tweet_id):
+    if request.method == 'POST':
+        content = request.POST.get('content')
+        user = request.user
+        created_at = timezone.now()
+
+        reply = Tweet(content=content, user=user, created_at=created_at, parent_id=tweet_id)
+        reply.save()
+
+    return redirect('tweet-thread', tweet_id=tweet_id)
+

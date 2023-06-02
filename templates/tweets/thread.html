@@ -26,6 +26,20 @@
             <hr style="margin: 0">
         </div>
 
+        <!-- Reply Form -->
+        <div class="my-3 px-3 ">
+            <form action="{% url 'create-reply' tweet.id %}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <textarea class="form-control border-0" id="tweetContent" name="content" rows="2" placeholder="Tweet your reply!" maxlength="300" style="font-size: 20px;"></textarea>
+                </div>
+                <div class="d-flex justify-content-end pt-2">
+                    <input type="submit" class="btn btn-primary" style="border-radius: 100pt" value="Tweet">
+                </div>
+            </form>
+        </div>
+        <hr style="margin: 0">
+
         <!-- Replies -->
         {% for reply in replies %}
             {% include 'components/tweet.html' with tweet=reply %}
