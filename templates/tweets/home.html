@@ -1,14 +1,41 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Home</h1>
-    <div>
-        <div>
-            <h3>Andyramy19</h3>
-            <p>Tweet content</p>
-            <p>Created at</p>
-            <a href="#">Reply</a>
-            <a href="#">View thread</a>
+    <div class="container-sm  p-4">
+        <!-- Main feed -->
+        <div class="col-md-8">
+            <h5>Home</h5>
+            <hr>
+
+            <!-- Tweet Form -->
+            <div class="mb-3">
+                <form action="{% url 'create-tweet' %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <textarea class="form-control border-0" id="tweetContent" name="content" rows="2" placeholder="What's happening?" maxlength="300" style="font-size: 20px;"></textarea>
+                    </div>
+                    <div class="d-flex justify-content-end pt-2">
+                        <input type="submit" class="btn btn-primary" style="border-radius: 100pt" value="Tweet">
+                    </div>
+                </form>
+            </div>
+            <hr>
+
+            <!-- Existing Tweets -->
+            {% for tweet in tweets %}
+                <div class=" mb-3">
+                    <div class="card-body">
+                            <h6 class="mb-2">
+                              <span class="text-normal">{{ tweet.user.username }}</span>
+                              <span class="text-muted">· {{ tweet.created_at }}</span>
+                            </h6>
+                        <p>{{ tweet.content }}</p>
+                    </div>
+                </div>
+                <hr>
+            {% empty %}
+                <p>Wow, such empty</p>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
