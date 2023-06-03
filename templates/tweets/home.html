@@ -9,12 +9,6 @@
     <div class="col-md-8 border-end border-start" style="overflow-y: auto; height: 100vh">
         <h5 class="p-3">Home</h5>
         <hr>
-        {% if user.is_authenticated %}
-        <form method="POST" action="{% url 'register' %}" class="navbar-brand">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-link">Logout</button>
-        </form>
-        {% endif %}
 
         <!-- Tweet Form -->
         <div class="mb-3 px-3">
@@ -38,9 +32,3 @@
         {% endfor %}
     </div>
 {% endblock %}
- {% if user.is_authenticated %}
-                    <form method="POST" action="{% url 'register' %}" class="navbar-brand">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-link">Logout</button>
-                    </form>
-                {% endif %}
