@@ -54,3 +54,20 @@ Twitter Reloaded is a Twitter clone project built using Django, Python, and SQLi
     ``` zsh
     python manage.py runserver
     ```
+## SOLID Principles
+- **Single Responsibility Principle (SRP)**: Each of our Django models, views, and templates have been designed with a single responsibility. For example, each view function is responsible for a single action - creating a tweet, displaying tweets, display a thread, etc.
+
+- **Open-Closed Principle (OCP)**: We have written our models in such a way that we can extend their functionality without modifying the existing code. For instance, we can add more event types to the Event model without modifying its existing structure.
+
+- **Liskov Substitution Principle (LSP)**: We've ensured that child models in our Django models can substitute their parent models without affecting the integrity of the application. This applies to the "Tweet" model and its "replies", which are also instances of the "Tweet" model.
+
+- **Interface Segregation Principle (ISP)**: Each view exposes a simple interface to the template that it renders. We don't burden any view or model with methods or attributes that it doesn't need.
+
+- **Dependency Inversion Principle (DIP)**: Our Django models depend on abstractions, not on concrete implementations. For instance, the "Tweet" model depends on the abstract "User" model provided by Django, not on a specific implementation of a user.
+
+## Design Patterns
+- **Decorator Pattern**: Django's views can be wrapped in decorator functions that modify their behavior. For instance, we used the `@login_required` decorator redirects unauthenticated users to the login page.
+
+- **Factory Pattern**: Django's ORM uses a kind of Factory pattern to create model instances. When we call `Tweet.objects.create(...)`, we're using a factory to create a new Tweet.
+
+- **Model-View-Template (MVT)**: Django's variant of MVC, MVT separates the concern of storing data (Model), displaying data (Template), and the logic to serve these (View).
