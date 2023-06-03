@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Tweet
+from events.models import Event
 from django.utils import timezone
 
 
@@ -17,12 +18,10 @@ def create_tweet(request):
         user = request.user
         created_at = timezone.now()
 
-        tweet = Tweet(content=content, user=user, created_at=created_at)
-        tweet.save()
+        Tweet.objects.create(content=content, user=user, created_at=created_at)
+        Event.objects.create(type='CT', user=request.user)
 
-        return redirect('home')
-    else:
-        return redirect('home')
+    return redirect('home')
 
 
 @login_required
@@ -39,8 +38,8 @@ def create_reply(request, tweet_id):
         user = request.user
         created_at = timezone.now()
 
-        reply = Tweet(content=content, user=user, created_at=created_at, parent_id=tweet_id)
-        reply.save()
+        Tweet.objects.create(content=content, user=user, created_at=created_at, parent_id=tweet_id)
+        Event.objects.create(type='RT', user=request.user)
 
     return redirect('tweet-thread', tweet_id=tweet_id)
 

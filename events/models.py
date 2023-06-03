@@ -3,11 +3,20 @@ from django.contrib.auth.models import User
 
 
 class Event(models.Model):
-    ACTION_CHOICES = (
+    EVENT_TYPES = (
         ('CT', 'Create Tweet'),
         ('RT', 'Reply Tweet'),
         ('OA', 'Open Application'),
     )
-    action = models.CharField(max_length=2, choices=ACTION_CHOICES)
+    type = models.CharField(max_length=2, choices=EVENT_TYPES)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True)
+
+    @property
+    def description(self):
+        if self.type == 'CT':
+            return f'created a tweet'
+        elif self.type == 'RT':
+            return f'replied to a tweet'
+        elif self.type == 'OA':
+            return f'opened the application'
