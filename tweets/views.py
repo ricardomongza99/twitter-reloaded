@@ -5,13 +5,20 @@ from events.models import Event
 from django.utils import timezone
 
 
-@login_required
+@login_required(login_url='login')
 def home_view(request):
     tweets = Tweet.objects.filter(parent__isnull=True).order_by('-created_at')[:10]
     return render(request, 'tweets/home.html', {'tweets': tweets})
 
 
-@login_required
+@login_required(login_url='login')
+def tweet_thread_view(request, tweet_id):
+    tweet = get_object_or_404(Tweet, id=tweet_id)
+    replies = Tweet.objects.filter(parent=tweet)
+    return render(request, 'tweets/thread.html', {'tweet': tweet, 'replies': replies})
+
+
+@login_required(login_url='login')
 def create_tweet(request):
     if request.method == 'POST':
         content = request.POST.get('content')
@@ -24,14 +31,7 @@ def create_tweet(request):
     return redirect('home')
 
 
-@login_required
-def tweet_thread_view(request, tweet_id):
-    tweet = get_object_or_404(Tweet, id=tweet_id)
-    replies = Tweet.objects.filter(parent=tweet)
-    return render(request, 'tweets/thread.html', {'tweet': tweet, 'replies': replies})
-
-
-@login_required
+@login_required(login_url='login')
 def create_reply(request, tweet_id):
     if request.method == 'POST':
         content = request.POST.get('content')
