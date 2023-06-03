@@ -2,16 +2,19 @@ from datetime import date
 from django.shortcuts import render
 from django.db.models import Count, Q
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 from .models import Event
 from tweets.models import Tweet
 
 
-def event_feed(request):
+@login_required(login_url='login')
+def event_feed_view(request):
     events = Event.objects.order_by('-timestamp')
     return render(request, 'events/event_feed.html', { 'events': events })
 
 
+@login_required(login_url='login')
 def reports_view(request):
 
     top_user_today = User.objects.annotate(
