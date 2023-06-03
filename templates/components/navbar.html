@@ -4,7 +4,7 @@
     </a>
     <ul class="nav nav-pills flex-column mb-auto mt-5">
         <li class="nav-item">
-            <a class="nav-link active" href="/tweets" aria-current="page">
+            <a class="nav-link active" href="/" aria-current="page">
                 <i class="fa fa-home fa-lg" style="width: 24px; margin-right: 8px;"></i>
                 <span class="nav-text">Home</span>
             </a>
@@ -15,16 +15,14 @@
                 Events
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">
-                Profile
+        <li class="mt-5">
+            <a class="nav-link" href="#" onclick=" document.getElementById('logout-form').submit();">
+                <i class="fas fa-sign-out-alt fa-lg" style="width: 24px; margin-right: 8px;"></i>
+                Logout
             </a>
+            <form id="logout-form" method="POST" action="{% url 'logout' %}" style="display: none;">
+                {% csrf_token %}
+            </form>
         </li>
-        {% if user.is_authenticated %}
-        <form method="POST" action="{% url 'login' %}" class="navbar-brand">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-link">Logout</button>
-        </form>
-        {% endif %}
     </ul>
 </div>
