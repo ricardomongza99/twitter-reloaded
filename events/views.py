@@ -1,3 +1,7 @@
 from django.shortcuts import render
+from .models import Event
 
-# Create your views here.
+
+def event_feed(request):
+    events = Event.objects.order_by('-timestamp')
+    return render(request, 'events/event_feed.html', {'events': events})
