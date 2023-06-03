@@ -2,13 +2,13 @@
 
 {% block content %}
     <!-- Main feed -->
-    <div class="col-md-8">
+    <div class="col-md-8 border-end">
         <h5 class="p-3">Events</h5>
         <hr>
 
         <!-- Existing Events -->
         {% for event in events %}
-            <div class="mb-3 p-3" style="background-color: #f8f9fa;">
+            <div class="mb-3 p-3">
                 <h6 class="mb-2">
                   <span class="text-normal">{{ event.user.username }}</span>
                   <span class="text-muted">· {{ event.timestamp }}</span>
