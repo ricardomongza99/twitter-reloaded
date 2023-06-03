@@ -1,8 +1,8 @@
-# Twitter Reloaded
+# :bird: Twitter Reloaded
 
 Twitter Reloaded is a Twitter clone project built using Django, Python, and SQLite. The project aims to implement core Twitter features, such as creating tweets, replying to tweets, and displaying tweets as threads.
 
-## Features
+## :star: Features
 
 - Create tweets with a maximum of 300 characters
 - Reply to tweets
@@ -10,12 +10,12 @@ Twitter Reloaded is a Twitter clone project built using Django, Python, and SQLi
 - Display the recent 10 tweets on the home dashboard
 - Event dashboard that logs user actions and provides reports
 
-## Prerequisites
+## :mag: Prerequisites
 
 - Python 3.9
 - pip
 
-## Installation
+## :computer: Installation
 
 1. Clone the repository to your local machine:
     ```zsh
@@ -48,13 +48,13 @@ Twitter Reloaded is a Twitter clone project built using Django, Python, and SQLi
   ```
 
 
-## Running the project
+## :rocket: Running the project
 
 1. Start the development server:
     ``` zsh
     python manage.py runserver
     ```
-## SOLID Principles
+## :balance_scale: SOLID Principles
 - **Single Responsibility Principle (SRP)**: We divided our Django project into three apps: users, tweets, and events. Each app has its own responsibility, maintaining the separation of concerns and making each part easier to manage and maintain.
 
 - **Open-Closed Principle (OCP)**: We have written our models in such a way that we can extend their functionality without modifying the existing code. For instance, we can add more event types to the Event model without modifying its existing structure.
@@ -65,9 +65,32 @@ Twitter Reloaded is a Twitter clone project built using Django, Python, and SQLi
 
 - **Dependency Inversion Principle (DIP)**: Our Django models depend on abstractions, not on concrete implementations. For instance, the "Tweet" model depends on the abstract "User" model provided by Django, not on a specific implementation of a user.
 
-## Design Patterns
+## :art: Design Patterns
 - **Decorator Pattern**: Django's views can be wrapped in decorator functions that modify their behavior. For instance, we used the `@login_required` decorator redirects unauthenticated users to the login page.
 
 - **Factory Pattern**: Django's ORM uses a kind of Factory pattern to create model instances. When we call `Tweet.objects.create(...)`, we're using a factory to create a new Tweet.
 
 - **Model-View-Template (MVT)**: Django's variant of MVC, MVT separates the concern of storing data (Model), displaying data (Template), and the logic to serve these (View).
+
+## :gear: Functional Requirements
+1. **User Authentication System:**
+- User registration (sign up)
+- User login
+- User logout
+- Password recovery (optional)
+2. **Tweet Management System:**
+- Create a new tweet (limited to 300 characters)
+- Reply to a tweet (creating a threaded conversation)
+- Retrieve and display tweets and threads for a user's home dashboard (showing the 10 most recent tweets)
+3. **Event Dashboard System (Admin only):**
+- Log events for various actions (create tweet, reply tweet, open application)
+- Store event data, including action type, user who performed the action, and timestamp
+- Generate reports based on event data, answering the following questions:
+    - Which user registered the most events during the day?
+    - What is the most commented tweet of the day?
+    - How many users opened the application during the day?
+
+## :stopwatch: Non Functional Requirements
+1. **Maintainability:** The codebase should be well-organized, modular, and adhere to best practices (e.g., SOLID principles and design patterns), making it easier to maintain and extend in the future.
+2. **Performance:** The application should respond to user requests quickly, ensuring a smooth user experience.
+3. **Security:** The application should implement measures to protect user data, such as secure storage of passwords and protection against common web vulnerabilities.
