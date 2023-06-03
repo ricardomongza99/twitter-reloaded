@@ -15,5 +15,16 @@
                 Events
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                Profile
+            </a>
+        </li>
+        {% if user.is_authenticated %}
+        <form method="POST" action="{% url 'login' %}" class="navbar-brand">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-link">Logout</button>
+        </form>
+        {% endif %}
     </ul>
 </div>
