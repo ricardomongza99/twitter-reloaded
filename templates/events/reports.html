@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- Main feed -->
+    <div class="col-md-8 border-start border-end" style="overflow-y: auto; height: 100vh">
+        <h5 class="p-3">Report</h5>
+        <hr>
+        <!-- Report section -->
+        <div class="row row-cols-1 row-cols-md-1 g-4 p-3">
+            {% include 'components/report_card.html' with card_title='Most Active User Today' card_text='@'|add:top_user_today.username  %}
+            {% include 'components/report_card.html' with card_title='Most Commented Tweet Today' card_text='"'|add:most_commented_tweet.content|add:'"' %}
+            {% include 'components/report_card.html' with card_title='Users Who Opened The App Today' card_text=users_opened_app_today %}
+        </div>
+    </div>
+{% endblock %}
