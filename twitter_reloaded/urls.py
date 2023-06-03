@@ -20,7 +20,9 @@ from users.views import register, user_login
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('tweets.urls')),
     path('tweets/', include('tweets.urls')),
     path('register/', register, name='register'),
     path('login/', user_login, name='login'),
+    path('', include('events.urls')),
 ]

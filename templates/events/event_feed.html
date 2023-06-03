@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- Main feed -->
+    <div class="col-md-8 border-start border-end" style="overflow-y: auto; height: 100vh">
+        <h5 class="p-3">Events</h5>
+        <hr>
+
+        <!-- Existing Events -->
+        {% for event in events %}
+            <div class="px-3">
+                <div class="d-flex">
+                    <p><strong>@{{ event.user.username }}</strong> {{ event.description }}</p>
+                    <p class="ms-auto text-right text-muted">{{ event.timestamp }}</p>
+                </div>
+            </div>
+            <hr>
+        {% empty %}
+            <p>No events yet</p>
+        {% endfor %}
+    </div>
+{% endblock %}
