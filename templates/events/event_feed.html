@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- Main feed -->
+    <div class="col-md-8">
+        <h5 class="p-3">Events</h5>
+        <hr>
+
+        <!-- Existing Events -->
+        {% for event in events %}
+            <div class="mb-3 p-3" style="background-color: #f8f9fa;">
+                <h6 class="mb-2">
+                  <span class="text-normal">{{ event.user.username }}</span>
+                  <span class="text-muted">· {{ event.timestamp }}</span>
+                </h6>
+                <p>{{ event.description }}</p>
+            </div>
+            <hr>
+        {% empty %}
+            <p>No events yet</p>
+        {% endfor %}
+    </div>
+{% endblock %}

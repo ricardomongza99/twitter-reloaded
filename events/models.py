@@ -11,3 +11,12 @@ class Event(models.Model):
     type = models.CharField(max_length=2, choices=EVENT_TYPES)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True)
+
+    @property
+    def description(self):
+        if self.type == 'CT':
+            return f'Created a tweet'
+        elif self.type == 'RT':
+            return f'Replied to a tweet'
+        elif self.type == 'OA':
+            return f'Opened the application'
