@@ -18,10 +18,7 @@ def create_tweet(request):
         user = request.user
         created_at = timezone.now()
 
-        tweet = Tweet(content=content, user=user, created_at=created_at)
-        tweet.save()
-
-        # Create an event for the new tweet
+        Tweet.objects.create(content=content, user=user, created_at=created_at)
         Event.objects.create(type='CT', user=request.user)
 
     return redirect('home')
@@ -41,10 +38,7 @@ def create_reply(request, tweet_id):
         user = request.user
         created_at = timezone.now()
 
-        reply = Tweet(content=content, user=user, created_at=created_at, parent_id=tweet_id)
-        reply.save()
-
-        # Create an event for the new reply
+        Tweet.objects.create(content=content, user=user, created_at=created_at, parent_id=tweet_id)
         Event.objects.create(type='RT', user=request.user)
 
     return redirect('tweet-thread', tweet_id=tweet_id)
