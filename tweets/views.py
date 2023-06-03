@@ -6,7 +6,7 @@ from django.utils import timezone
 
 
 @login_required
-def home(request):
+def home_view(request):
     tweets = Tweet.objects.filter(parent__isnull=True).order_by('-created_at')[:10]
     return render(request, 'tweets/home.html', {'tweets': tweets})
 
@@ -25,7 +25,7 @@ def create_tweet(request):
 
 
 @login_required
-def tweet_thread(request, tweet_id):
+def tweet_thread_view(request, tweet_id):
     tweet = get_object_or_404(Tweet, id=tweet_id)
     replies = Tweet.objects.filter(parent=tweet)
     return render(request, 'tweets/thread.html', {'tweet': tweet, 'replies': replies})

@@ -4,8 +4,8 @@ from users import views as userviews
 
 
 urlpatterns = [
-    path('', views.home, name='home'),
+    path('', views.home_view, name='home'),
+    path('tweet/<int:tweet_id>/', views.tweet_thread_view, name='tweet-thread'),
     path('create-tweet/', views.create_tweet, name='create-tweet'),
-    path('tweet/<int:tweet_id>/', views.tweet_thread, name='tweet-thread'),
     path('reply/<int:tweet_id>/', views.create_reply, name='create-reply'),
 ]
