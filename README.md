@@ -55,7 +55,7 @@ Twitter Reloaded is a Twitter clone project built using Django, Python, and SQLi
     python manage.py runserver
     ```
 ## SOLID Principles
-- **Single Responsibility Principle (SRP)**: Each of our Django models, views, and templates have been designed with a single responsibility. For example, each view function is responsible for a single action - creating a tweet, displaying tweets, display a thread, etc.
+- **Single Responsibility Principle (SRP)**: We divided our Django project into three apps: users, tweets, and events. Each app has its own responsibility, maintaining the separation of concerns and making each part easier to manage and maintain.
 
 - **Open-Closed Principle (OCP)**: We have written our models in such a way that we can extend their functionality without modifying the existing code. For instance, we can add more event types to the Event model without modifying its existing structure.
 
