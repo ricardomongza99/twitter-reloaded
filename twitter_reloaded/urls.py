@@ -24,4 +24,5 @@ urlpatterns = [
     path('tweets/', include('tweets.urls')),
     path('register/', register, name='register'),
     path('login/', user_login, name='login'),
+    path('', include('events.urls')),
 ]
