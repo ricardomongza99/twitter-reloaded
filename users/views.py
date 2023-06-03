@@ -15,7 +15,7 @@ def register(request):
             # Create an event for the login
             Event.objects.create(type='OA', user=request.user)
 
-            return redirect('/tweets/')
+            return redirect('/')
     else:
         form = RegisterForm()
     return render(request, 'users/register.html', {'form': form})
