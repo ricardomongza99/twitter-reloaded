@@ -15,8 +15,8 @@ class Event(models.Model):
     @property
     def description(self):
         if self.type == 'CT':
-            return f'Created a tweet'
+            return f'created a tweet'
         elif self.type == 'RT':
-            return f'Replied to a tweet'
+            return f'replied to a tweet'
         elif self.type == 'OA':
-            return f'Opened the application'
+            return f'opened the application'

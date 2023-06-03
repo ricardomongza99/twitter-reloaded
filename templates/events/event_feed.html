@@ -2,18 +2,17 @@
 
 {% block content %}
     <!-- Main feed -->
-    <div class="col-md-8 border-end">
+    <div class="col-md-8 border-start border-end" style="overflow-y: auto; height: 100vh">
         <h5 class="p-3">Events</h5>
         <hr>
 
         <!-- Existing Events -->
         {% for event in events %}
-            <div class="mb-3 p-3">
-                <h6 class="mb-2">
-                  <span class="text-normal">{{ event.user.username }}</span>
-                  <span class="text-muted">· {{ event.timestamp }}</span>
-                </h6>
-                <p>{{ event.description }}</p>
+            <div class="px-3">
+                <div class="d-flex">
+                    <p><strong>@{{ event.user.username }}</strong> {{ event.description }}</p>
+                    <p class="ms-auto text-right text-muted">{{ event.timestamp }}</p>
+                </div>
             </div>
             <hr>
         {% empty %}
