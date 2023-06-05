@@ -1,6 +1,8 @@
 # :bird: Twitter Reloaded
 
-Twitter Reloaded is a Twitter clone project built using Django, Python, and SQLite. The project aims to implement core Twitter features, such as creating tweets, replying to tweets, and displaying tweets as threads.
+Twitter Reloaded is a Twitter clone project built using Django, Python, and SQLite. The project aims to implement core Twitter features, such as creating tweets, replying to tweets, and displaying tweets as threads. Also includes an event list for all user actions and a reports dashboard displaying different statistics.
+
+
 
 ## :star: Features
 
@@ -54,6 +56,7 @@ Twitter Reloaded is a Twitter clone project built using Django, Python, and SQLi
     ``` zsh
     python manage.py runserver
     ```
+
 ## :balance_scale: SOLID Principles
 - **Single Responsibility Principle (SRP)**: We divided our Django project into three apps: users, tweets, and events. Each app has its own responsibility, maintaining the separation of concerns and making each part easier to manage and maintain.
 
@@ -94,3 +97,25 @@ Twitter Reloaded is a Twitter clone project built using Django, Python, and SQLi
 1. **Maintainability:** The codebase should be well-organized, modular, and adhere to best practices (e.g., SOLID principles and design patterns), making it easier to maintain and extend in the future.
 2. **Performance:** The application should respond to user requests quickly, ensuring a smooth user experience.
 3. **Security:** The application should implement measures to protect user data, such as secure storage of passwords and protection against common web vulnerabilities.
+
+## :camera: Screenshots
+### Home
+<kbd>
+  <img src="screenshots/feed.png" alt="Feed" width="800">
+</kbd>
+
+### Thread
+
+<kbd>
+  <img src="screenshots/thread.png" alt="Thread" width="800">
+</kbd>
+
+### Events
+<kbd>
+  <img src="screenshots/events.png" alt="Events" width="800">
+</kbd>
+
+### Reports
+<kbd>
+  <img src="screenshots/reports.png" alt="Reports" width="800">
+</kbd>
